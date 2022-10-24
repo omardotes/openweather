@@ -1,0 +1,66 @@
+
+{% load static %}
+
+<!-- <link
+    rel="stylesheet"
+    type="text/css"
+    href=" {% static '../static/css/bootstrap.css' %} "
+/>
+
+<nav class="p-2 fixed-top d-flex justify-content-center" style="background-color: #528fbb;" >
+
+    <div class="w-50">
+        <input class="form-control" type="text" placeholder="Enter City" aria-label="City">
+    </div>
+
+</nav> -->
+
+ 
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Open Weather</title>
+    <link
+        rel="stylesheet"
+        type="text/css"
+        href=" {% static '../static/css/bootstrap.css' %} "
+    />
+</head>
+<body>
+    <div style="background-color:#2b7a78">
+        <div class="container" style="padding-top: .3em;" >
+            <div class="column" style="text-align:center">   
+            <h3 style="color: white">How's the weather around the world?</h3>
+            </div>
+        </div>   
+        <div  style="background-color:#3aafa9">
+            <section class="section">
+                <div class="container">
+                    <div class="columns" style="padding-top: 2em; padding-bottom: 2em; ">
+                            {% for weather in weather_data %}
+                                <div class="box" style="padding-bottom: .5em; text-align: center;">
+                                    <div class="card" style="margin-left: 22em; width: 25em; background-color: #def2f1; ">
+                                        <div class="card-body">
+                                        <h5 class="card-title"><img src="http://openweathermap.org/img/w/{{ weather.icon }}.png" alt="Image"  width="50" height="50">{{ weather.city }},<strong> {{weather.country}}</strong></h5> 
+                                        <p class="card-text">{{ weather.description }}</p>
+                                        <p class="card-text">Temperature: {{ weather.temperature }}°C</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                    </div>
+                </div>
+
+            </section>
+            
+            <footer class="footer">
+            </footer>
+        </div>
+    </div>
+</body>
+</html>
